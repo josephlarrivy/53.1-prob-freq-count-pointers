@@ -12,7 +12,6 @@ const createFrequencyObj = (string) => {
   return obj
 }
 
-
 function constructNote(note, letters) {
   if (letters == '' || note.length > letters.length) {
     console.log(false)
@@ -25,6 +24,20 @@ function constructNote(note, letters) {
 
   const noteObj = createFrequencyObj(note)
   const lettersObj = createFrequencyObj(letters)
+
+  for (let noteKey in noteObj) {
+    for (let lettersKey in lettersObj) {
+      if (noteKey === lettersKey) {
+        if (noteObj[noteKey] === lettersObj[lettersKey]) {
+          console.log(true)
+          return true
+        } else {
+          console.log(false)
+          return false
+        }
+      }
+    }
+  }
 
 }
 
@@ -58,13 +71,35 @@ function constructNote(note, letters) {
 
 
 constructNote('aa', 'abc') // false
+console.log(false)
+console.log('############')
+
 // constructNote('abc', 'dcba') // true
 constructNote('abc', 'abcd') // true
+console.log(true)
+console.log('############')
+
 // constructNote('aabbcc', 'bcabcaddff') // true
 constructNote('aabbcc', 'aabbccddff') // true
+console.log(true)
+console.log('############')
+
+
 
 
 constructNote('aa', '') // false
+console.log(false)
+console.log('############')
+
+
 constructNote('', 'abc') // true
+console.log(true)
+console.log('############')
+
 constructNote('fp', 'kkftp') //true
+console.log(true)
+console.log('############')
+
 constructNote('calksdjc', 'calc') //false
+console.log(false)
+console.log('############')
